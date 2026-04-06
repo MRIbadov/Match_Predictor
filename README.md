@@ -53,8 +53,6 @@ I achieved this by building a full pipeline with these steps:
 - Support more leagues and competitions
 - Improve draw prediction
 - Add automated retraining
-- Deploy the API online
-- Add a frontend dashboard
 
 ## Short Summary
 
