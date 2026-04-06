@@ -1,5 +1,7 @@
 # Football Predictor
 
+
+
 ## 1. Overview Of Project
 
 This project predicts football match outcomes using machine learning. It estimates:
@@ -10,8 +12,9 @@ This project predicts football match outcomes using machine learning. It estimat
 - expected goals
 - likely scorelines
 
-It also includes a FastAPI backend so predictions can be served as an application, not only as a training script.
+It also includes a FastAPI backend so predictions can be served as an application.
 
+![0e0c2927-3c2a-4b69-80c0-567695106a4d](https://github.com/user-attachments/assets/936eae16-8768-4389-8b83-34e1c211c483)
 ## 2. What Tools Have Been Used
 
 - Python
