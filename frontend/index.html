@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Football Predictor</p>
+        <h1>Simple match forecasts with a cleaner, faster prediction flow.</h1>
+        <p class="lede">
+          Choose two teams, run the ensemble model, and instantly see win probabilities, expected goals, and likely scorelines in one responsive view.
+        </p>
+      </div>
+      <div class="hero-card">
+        <p class="hero-kicker">What you get</p>
+        <ul class="hero-list">
+          <li>Three-way outcome probabilities</li>
+          <li>Expected goals for each side</li>
+          <li>Top exact scoreline scenarios</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel form-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Build a Matchup</h2>
+          <p>Pick two teams from the trained dataset and compare them instantly.</p>
+        </div>
+      </div>
+
+      <form id="predict-form" class="match-form">
+        <div class="team-picker">
+          <label class="field">
+            <span>Home Team</span>
+            <select id="home-team" required></select>
+          </label>
+
+          <button id="swap-button" type="button" class="swap-button" aria-label="Swap teams">
+            Swap
+          </button>
+
+          <label class="field">
+            <span>Away Team</span>
+            <select id="away-team" required></select>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button id="predict-button" type="submit" class="primary-button">Run Prediction</button>
+          <p id="status" class="status">Loading teams...</p>
+        </div>
+      </form>
+    </section>
+
+    <section id="result-panel" class="panel result-panel hidden">
+      <div class="result-header">
+        <div>
+          <p class="result-label">Prediction</p>
+          <h2 id="match-title">Home vs Away</h2>
+          <p id="model-version" class="model-version"></p>
+        </div>
+        <div class="winner-card">
+          <span class="winner-label">Model Favorite</span>
+          <strong id="favorite-outcome">Waiting...</strong>
+          <span id="favorite-confidence" class="winner-confidence"></span>
+        </div>
+      </div>
+
+      <div class="probability-grid">
+        <article class="prob-card home">
+          <span class="prob-label">Home Win</span>
+          <strong id="home-prob">0%</strong>
+          <span class="prob-note">Chance of the home side taking all three points.</span>
+        </article>
+        <article class="prob-card draw">
+          <span class="prob-label">Draw</span>
+          <strong id="draw-prob">0%</strong>
+          <span class="prob-note">Chance of the match finishing level.</span>
+        </article>
+        <article class="prob-card away">
+          <span class="prob-label">Away Win</span>
+          <strong id="away-prob">0%</strong>
+          <span class="prob-note">Chance of the away side winning.</span>
+        </article>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span>Expected Home Goals</span>
+          <strong id="home-goals">0.00</strong>
+        </article>
+        <article class="summary-card">
+          <span>Expected Away Goals</span>
+          <strong id="away-goals">0.00</strong>
+        </article>
+      </div>
+
+      <div class="scorelines">
+        <div class="panel-heading compact">
+          <h3>Top Scorelines</h3>
+          <p>The most likely exact results estimated from the Poisson side of the ensemble.</p>
+        </div>
+        <div id="scoreline-list" class="scoreline-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+
+# IDE / editor
+.idea/
+.vscode/
+
+# Local data sync state
+data/provider_state.json
+
+# Generated documentation artifacts
+docs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local logs / temp
+*.log
+*.tmp
+
+# Model/runtime cache if ever generated
+.pytest_cache/
+.mypy_cache/

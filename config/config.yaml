@@ -1,0 +1,53 @@
+project:
+  name: football_predictor
+  version: "1.0.0"
+  seed: 42
+
+data:
+  raw_path: data/raw/matches.csv
+  processed_path: data/processed/features.csv
+  seasons: [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+  train_seasons: [2018, 2019, 2020, 2021, 2022, 2023]
+  val_seasons: [2024]
+  test_seasons: [2025]
+
+ingestion:
+  enabled: true
+  provider: football-data.org
+  state_path: data/provider_state.json
+  api_key_env: FOOTBALL_DATA_API_KEY
+  start_date: "2022-01-01"
+  lookback_days: 7
+  competitions: ["PL"]
+
+elo:
+  initial_rating: 1500
+  k_factor: 32
+  home_advantage: 100
+  decay_factor: 0.95
+
+features:
+  rolling_window: 5
+  time_decay_half_life: 90
+  min_matches_for_form: 3
+
+models:
+  poisson:
+    alpha: 1.0
+  xgboost:
+    n_estimators: 300
+    max_depth: 4
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 3
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+  ensemble:
+    poisson_weight: 0.4
+    xgboost_weight: 0.6
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  max_scoreline: 6
